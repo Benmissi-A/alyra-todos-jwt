@@ -18,7 +18,7 @@ const Login = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        
+
       },
       body: JSON.stringify({
         login,
@@ -32,6 +32,7 @@ const Login = () => {
         return response.json()
       })
       .then(result => {
+        console.log(result)
         if (isMounted.current) {
           userDispatch({
             type: "LOGIN_SUCCESS",

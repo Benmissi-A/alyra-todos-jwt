@@ -1,15 +1,19 @@
 import { useTodosDispatch } from "../context/TodosDispatchContext"
 import { useIsMounted } from "../hooks/useIsMounted"
+import { useUser } from "../context/UserContext"
 
 const ToggleTodo = ({ todo }) => {
   const dispatch = useTodosDispatch()
   const isMounted = useIsMounted()
+  const {user} = useUser()
+  console.log()
 
   const toggleCompleteTodo = () => {
     fetch(`${process.env.REACT_APP_API_URL}/todos/${todo.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        Authorization: "Bearer " + user.access_token
       },
       body: JSON.stringify({
         ...todo,

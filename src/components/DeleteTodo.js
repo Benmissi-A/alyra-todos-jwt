@@ -1,14 +1,17 @@
 import { useTodosDispatch } from "../context/TodosDispatchContext"
 import { useIsMounted } from "../hooks/useIsMounted"
+import { useUser } from "../context/UserContext"
 
 const DeleteTodo = ({ todo }) => {
   const dispatch = useTodosDispatch()
   const isMounted = useIsMounted()
+  const {user} = useUser()
   const deleteTodo = () => {
     fetch(`${process.env.REACT_APP_API_URL}/todos/${todo.id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
+        Authorization: "Bearer " + user.access_token
       },
     })
       .then((response) => {
