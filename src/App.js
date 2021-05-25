@@ -1,9 +1,10 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import { BrowserRouter as Router, Switch, Route ,Redirect} from "react-router-dom"
 import Todos from "./components/Todos"
 import ColorModeContainer from "./components/ColorModeContainer"
 import Login from "./components/Login"
 import Navigation from "./components/Navigation"
 import Home from "./components/Home"
+import {useUser} from "./context/UserContext"
 
 function App() {
   return (
@@ -15,9 +16,9 @@ function App() {
           <Switch>
             <Route exact path="/">
               <Home />
-            </Route>
+            </Route>    
             <Route exact path="/todos">
-              <Todos />
+              {useUser ? <Todos /> : <Redirect to="/login" />}
             </Route>
             <Route exact path="/login">
               <Login />
