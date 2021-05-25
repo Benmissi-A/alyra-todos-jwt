@@ -8,7 +8,7 @@ const AddTodoForm = () => {
   const dispatch = useTodosDispatch()
   const darkModeClass = darkMode ? "text-white bg-dark" : ""
   const isMounted = useIsMounted()
-  const {user} = useUser
+  const {user} = useUser()
 
   const handleFormSubmit = (event) => {
     event.preventDefault()
