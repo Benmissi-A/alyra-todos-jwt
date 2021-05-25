@@ -1,5 +1,5 @@
 // src/context/UserContext.js
-import { createContext, useContext, useReducer, useEffect } from "react"
+import { createContext, useContext, useReducer } from "react"
 import { userReducer } from "../reducers/userReducer"
 
 const UserContext = createContext()
